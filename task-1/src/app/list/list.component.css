@@ -1,0 +1,47 @@
+*{
+    background-color: rgba(220, 217, 217, 0.837);  
+}
+
+.man{
+    margin-top: 10px;
+    margin-right:30px;
+}
+input{
+    margin-left: 10px;
+    margin-top: 60px;
+    border-radius: 5px;
+    border-color: black;
+    width: 950px;
+    height: 40px;
+}
+.card{
+    border-radius: 10px;
+    border-color: black;
+    margin-top: 30px;
+    margin-left: 20px; 
+}
+.card-title{
+    float: right;
+    background-color: rgba(241, 72, 100, 0.807);
+}
+.card-text{
+    padding-top:20px;
+}
+.done{
+    padding-left: 40px;
+    padding-top: 50px;
+    
+}
+.done li{
+    margin-top: 20px;
+    list-style: none;
+    font-family:sans-serif;
+    font-size: 20px;
+    color: black;
+}
+.card-body card-title{
+    text-align: left;
+}
+.card-width{
+    width:14rem;
+}
