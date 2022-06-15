@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="row card">
+        <div class="col-sm-12">
+          <div id="fileSelector">
+            Upload file <input type="file" name="uploader" id="fileUpload"
+            multiple ng2FileSelect [uploader]="uploader">
+          </div>
+        </div>
+      </div>                
+    </div>
+  </div>
+</div>
+
+<div class=container-fluid>
+  <div class="row">
+    <div class="col-md-2"></div>
+      <div class="row card1">
+        <div class="col-sm-12">
+          <div class="row uploadList" *ngFor="let item of uploader.queue">
+            <div class="col-sm-4">{{item.file.name}}</div>
+            <div class="col-sm-4">
+              <div class="progress">
+                <div class="progress-bar bg-success" [ngStyle]="{'width':item.progress+'%'}"></div>
+              </div>
+          </div>
+          <div class="col-sm-4">
+            <span class="material-icons" id="btn3" (click)="item.upload()">file_upload</span>
+            <span class="material-icons" id="btn4" (click)="item.remove()">cancel</span>
+          </div>
+        </div>  
+        <button type="button" id="btn1" class="btn btn-primary" (click)="uploader.uploadAll()">Upload All</button>
+        <button type="button" id="btn2" class="btn btn-primary" (click)="uploader.clearQueue()">Remove All</button>
+      </div>
+    </div>
+  </div>
+</div>
