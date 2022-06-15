@@ -1,0 +1,145 @@
+.navbar{
+    background-color: blue;
+    color: white;
+}
+.nav-item{
+    font-size: 20px;
+    margin-left: 30px;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+.editdata{
+    float: right;
+    font-size: 30px;
+    color: white;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+#customer{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 120px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.material-icons{
+    font-size: 50px;
+    padding-left: 20px;
+}
+.person{
+    margin-top: 14px;
+    margin-left: 30px;
+}
+.h1{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.person5{
+    margin-left: 700px;
+}
+.card{
+    border-color: rgb(124, 109, 109);
+    margin-top: 30px;
+    margin-left: 90px; 
+    height: 130px;
+    width: 16rem;
+    text-align: center;
+    padding: 0px;
+    font-size: 13px;
+}
+.card-body{
+    padding: 0px;
+}
+.card-title{
+    padding-top: 5px;
+    text-align: left;
+    padding-left: 15px;
+    background-color: blue;
+    height: 40px;
+    font-size: 20px;
+    color: white;
+}
+.card-text{
+    font-size: 15px;
+    margin-bottom:5px;
+}
+.card-text1{
+    text-align: center;
+} 
+ .cardimg{
+    
+    margin-top: 8px;
+    padding-left: 25px;
+} 
+.griddisplay{
+    display: grid;
+    grid-template-columns: repeat(4,.2fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+}
+.list{
+    display:inline-flex ;
+    list-style: none;
+    padding-right: 20px;
+    margin-left: 40px;
+}
+.list a{
+    cursor: pointer;
+}
+#card2{
+    padding-top: 30px;
+    size: 100px;
+    text-align: center;
+}
+#iconic{
+    font-size: 15px;
+}
+.newcustomer{
+    text-align: center;
+    margin-top: 70px;
+}
+.textbox{
+    width:200px;
+    height: 35px;
+    text-align: center;
+   margin-left: 10px;
+}
+.button{
+    font-size: 15px;
+    height: 35px ;
+    width: 100px;
+}
+#tablet{
+    margin-left: 40px;
+}
+.order{
+    margin-left: 40px;
+    font-size: 30px;
+    margin-top: 60px;
+}
+#detail0{
+    margin-top: 50px;
+    margin-left: 150px;
+    font-size: 20px;
+    text-align: center;
+}
+.detail0 details{
+    margin-left: 30px;
+}
+#details1{
+    font-size: 20px;
+    text-align: center;
+}
+.agm-map{
+    height:300px;
+}
+#map { 
+    height: 500px;
+    width: 1500px;
+}
+
+

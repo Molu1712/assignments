@@ -1,0 +1,288 @@
+
+
+
+<!-- main navbar -->
+
+
+
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <span class="material-icons">
+          people
+        </span>
+        <li class="nav-item">
+          Customer Manager
+        </li>
+        <li class="nav-item" id="customer">
+          <div>
+            Customers
+          </div>
+        </li>
+        <li class="nav-item">
+          Orders
+        </li>
+        <li class="nav-item">
+          About
+        </li>
+        <li class="nav-item">
+          Login
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+  
+<!-- second navbar -->
+
+<div *ngIf="custview1" class="port">
+  <nav class="nav">
+    <li class="person">
+      <span class="material-icons">
+        person
+      </span>
+    </li>
+    <h1 class="h1">Customers</h1>
+  </nav>
+</div>
+  
+<!-- seperated navbar   -->
+
+<div *ngIf="custview2" class="port">
+  <nav class="nav">
+    <li class="person">
+      <span class="material-icons">
+        person
+      </span>
+    </li>
+    <h1 class="h1">Customers Information</h1>
+  </nav>
+</div>
+
+<!-- third navbar -->
+  
+<div *ngIf="custview3">
+  <ul class="list">
+    <li>
+     <a class="btn" (click)="grid()"> <i class="fa fa-th"></i> card view</a>
+    </li>
+    <li>
+      <a class="btn" (click)="list()"><i class="fa fa-list"></i> list view</a>
+    </li>
+    <li>
+      <a class="btn" (click)="map()" roterLink="map"><i class="fa fa-map-marker"></i> map view </a>
+    
+    </li>
+    <li>
+      <a class="btn" (click)="addcust()"><i class="fa fa-plus"></i> New Customer </a>
+    </li>
+    <li class="person5">
+      <h5 class="h5">Filter:<input type="text" placeholder="" [(ngModel)]="filtervalue"></h5>
+    </li>
+  </ul>
+</div>
+
+
+<!-- grid view -->
+
+<div *ngIf="gridview" class="griddisplay">
+  <div *ngFor="let e of (category | search:filtervalue | paginate:{
+    itemsPerPage:12,currentPage:page,
+    totalItems:tablesize})" class="card">
+    <h5 class="card-title"> {{e.firstname}} {{e.lastname}}<a class="editdata" (click)="split(e)" ><i class="fa fa-edit"></i> </a></h5>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-4">
+            <div class="cardimg">
+              <span class="material-icons">
+                person
+              </span>
+            </div>
+          </div>
+          <div class="col-8">
+            <h5 class="card-text">{{e.city}}</h5>
+            <h5 class="card-text">{{e.state}}</h5>
+            <a href="#" class="card-text1" (click)="cust()">{{e.list}}</a>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div >
+  <pagination-controls
+  previousLabel="prev"
+  nextLabel="Next"
+  (pageChange)="onTableDataChange($event)">
+</pagination-controls> 
+  </div>
+</div>
+
+
+
+<!-- list view -->
+
+<div *ngIf="listview" class="listview">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Order Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr id="iconic" *ngFor="let a of (category | search:filtervalue)">
+        <td> <span class="material-icons"> person </span> </td>
+        <td>{{a.firstname}}</td>
+        <td>{{a.lastname}}</td>
+        <td>{{a.address}}</td>
+        <td>{{a.city}}</td>
+        <td>{{a.state}}</td>
+        <td>{{a.order}}</td>
+        <td><a href="#" class="card-text1" (click)="cust()" >{{a.list}}</a></td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
+    
+  <!-- Addnewcustomer -->
+
+<div class="newcustomer" *ngIf="newadd">
+  <form #simpleForm="ngForm" (ngSubmit)="getValues(simpleForm.value)">
+    
+    <label>First Name :  </label><input type="text" class="textbox" [(ngModel)]="toadd.firstname" name="firstname" placeholder="First Name">
+    <br><br>
+    <br>
+    <label>Last Name :  </label><input type="text" class="textbox" [(ngModel)]="toadd.lastname" name="lastname" placeholder="Last Name">
+    <br><br>
+    <br>
+    <label>address :  </label><input type="text" class="textbox" [(ngModel)]="toadd.address" name="address" placeholder="Address">
+    <br><br>
+    <br>
+    <label>City :  </label><input type="text" class="textbox" [(ngModel)]="toadd.city" name="city" placeholder="City">
+    <br><br>
+    <br>
+    <label>State :  </label><input type="text" class="textbox" [(ngModel)]="toadd.state" name="state" placeholder="State">
+    <br><br>
+    <br>
+    <button class="button" (click)="add()">Submit</button>
+  </form>
+</div>
+
+
+<!-- edit -->
+
+<div class="newcustomer" *ngIf="editview">
+  <form #simpleForm="ngForm" (ngSubmit)="getValues(simpleForm.value)">
+    
+    <label>First Name :  </label><input type="text" class="textbox" [(ngModel)]="custtoadd.firstname" name="firstname" placeholder="First Name">
+    <br><br>
+    <br>
+    <label>Last Name :  </label><input type="text" class="textbox" [(ngModel)]="custtoadd.lastname" name="lastname" placeholder="Last Name">
+    <br><br>
+    <br>
+    <label>address :  </label><input type="text" class="textbox" [(ngModel)]="custtoadd.address" name="address" placeholder="Address">
+    <br><br>
+    <br>
+    <label>City :  </label><input type="text" class="textbox" [(ngModel)]="custtoadd.city" name="city" placeholder="City">
+    <br><br>
+    <br>
+    <label>State :  </label><input type="text" class="textbox" [(ngModel)]="custtoadd.state" name="state" placeholder="State">
+    <br><br>
+    <br>
+    <button class="button" (click)="update()">Update</button>
+  </form>
+</div>
+
+
+  <!-- customer information bar -->
+
+
+<div *ngIf="custview" class="custview">
+  <nav class="nav">
+    <li class="person">
+      <span class="material-icons">
+        person
+      </span>
+    </li>
+    <h1 class="h1">Customers Information</h1>
+  </nav>
+  <ul class="list">
+    <li>
+      <a class="btn" (click)="details()"> <i class="fa fa-list"></i>Customer Details</a>
+    </li>
+    <li>
+      <a class="btn" (click)="calc()"><i class="fa fa-tags"></i>Customer Orders</a>
+    </li>
+    <li>
+      <a class="btn" (click)="edit()"><i class="fa fa-edit"></i>Edit Customer</a>
+    </li>
+  </ul>
+</div>
+  
+
+<!-- customer order -->
+
+<div *ngIf="custorder">
+  <h1 class="order">Order for Ted James</h1>
+  <table id="tablet" class="table table-striped">
+    <thead>
+      <tr>
+       <td>Basket Ball</td>
+       <td>7.99</td>
+      </tr>
+      <tr>
+        <td>Shoes</td>
+        <td>199.99</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>207.98</td>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<!-- Customers details -->
+ 
+<div *ngIf="custdet" >
+  <div *ngFor="let h of (category )| paginate:{
+    itemsPerPage:12,currentPage:page,
+    totalItems:tablesize};">
+    <div class="row">
+      <div class="col-2">
+        <div class="details">
+          <span class="material-icons">
+            person
+          </span>
+        </div>
+      </div>
+      <div class="col-4" id="detail0">
+        <h5> {{h.firstname}} {{h.lastname}}</h5>
+        <h5>{{h.city}}</h5>
+        <h5>{{h.state}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="page1">
+    <pagination-controls
+      previousLabel="prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange1($event)">
+    </pagination-controls> 
+  </div> 
+</div>
+
+<div *ngIf="custdet1" class="map111">
+<div>    
+  <button type="button"  (click)="jaya()">Click here</button>     
+  <div id="map"></div> 
+</div> 
+
+<router-outlet></router-outlet>
